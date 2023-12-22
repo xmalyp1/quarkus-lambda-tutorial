@@ -36,7 +36,7 @@ jobs:
             pip install awscli --upgrade --user
             
             # Deploy the Lambda function
-            sam deploy -t target/sam.native.yaml -g --stack-name lambda-quarkus-example
+            sam deploy -t target/sam.native.yaml -g 
             
             # Print the endpoint or other relevant information
-            aws cloudformation describe-stacks --stack-name lambda-quarkus-example --query 'Stacks[0].Outputs'
+            #aws cloudformation describe-stacks --stack-name lambda-quarkus-example --query 'Stacks[0].Outputs'
