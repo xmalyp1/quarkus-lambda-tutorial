@@ -36,6 +36,6 @@ jobs:
             pip install awscli --upgrade --user
             
             # Deploy the Lambda function
-            sam deploy -t target/sam.native.yaml -g 
+            sam deploy -t target/sam.native.yaml -g --stack-name QuarkusLambdaTutorial 
             
             # Print the endpoint or other relevant information
