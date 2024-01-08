@@ -39,4 +39,3 @@ jobs:
             sam deploy -t target/sam.native.yaml -g 
             
             # Print the endpoint or other relevant information
-            #aws cloudformation describe-stacks --stack-name lambda-quarkus-example --query 'Stacks[0].Outputs'
