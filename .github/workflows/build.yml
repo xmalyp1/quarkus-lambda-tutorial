@@ -20,22 +20,21 @@ jobs:
           distribution: 'graalvm' # See 'Options' for all available distributions
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up AWS credentials
+      - name: Build the image and lambda
+        run: ./mvnw install -Dnative -Dquarkus.native.container-build=true
+
+      - name: Build and Deploy Lambda Function
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-north-1
 
-      - name: Build the image and lambda
-        run: ./mvnw install -Dnative -Dquarkus.native.container-build=true
-
-      - name: Build and Deploy Lambda Function
         run: |
             # Install AWS CLI
             pip install awscli --upgrade --user
             
             # Deploy the Lambda function
-            sam deploy -t target/sam.native.yaml -g --stack-name QuarkusLambdaTutorial 
+            sam deploy -t target/sam.native.yaml -g --stack-name QuarkusLambdaTutorial --s3-bucket pm-sk-bucket
             
             # Print the endpoint or other relevant information
