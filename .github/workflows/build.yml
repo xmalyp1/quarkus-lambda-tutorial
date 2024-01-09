@@ -35,6 +35,4 @@ jobs:
 
       - name: Build and Deploy Lambda Function
 
-        run: |
-            # Deploy the Lambda function
-            sam deploy -t ./target/sam.native.yaml -g --stack-name QuarkusLambdaTutorial --s3-bucket pm-sk-bucket
+        run: sam deploy -t ./target/sam.native.yaml -g --stack-name QuarkusLambdaTutorial --s3-bucket pm-sk-bucket
