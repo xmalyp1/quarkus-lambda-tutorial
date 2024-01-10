@@ -38,4 +38,4 @@ jobs:
         run: |
           pwd
           sam build -t target/sam.native.yaml --debug
-          sam deploy -t target/sam.native.yaml -g --stack-name quarkus-lambda-tutorial --s3-bucket pm-sk-bucket --debug
+          sam deploy -t target/sam.native.yaml --stack-name quarkus-lambda-tutorial --s3-bucket pm-sk-bucket --debug
